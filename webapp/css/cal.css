@@ -1,0 +1,20 @@
+th {
+	text-align: center;
+	width: 12
+}
+
+table {
+	width: 100%;
+}
+
+h1.month {
+	text-align: center;
+}
+
+.date {
+	text-align: right;
+}
+
+td :hover {
+	background-color: gray;
+}

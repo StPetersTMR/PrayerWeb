@@ -1,13 +1,39 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="prayerApp">
 	<head>
 		<title>St. Peter's PrayerWeb</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-resource.min.js"></script>
 		<script src="js/prayerapi.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/cal.css" rel="stylesheet">
 	</head>
 	<body>
-		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div ng-controller="PrayerListController as prayerList">
+					<nav>
+						<ul class="pager">
+							<li class="{{prayerList.prevClass}}"><a ng-click="prayerList.prev()" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>
+							<li class="{{prayerList.nextClass}}"><a ng-click="prayerList.next()" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+						</ul>
+					</nav>
+					<div class="page-header">
+						<h1>{{prayerList.current.topic}} <small>{{prayerList.current.date | date:'fullDate'}}</small></h1>
+					</div>
+					<p>{{prayerList.current.description}}</p>
+					<nav>
+						<ul class="pager">
+							<li class="{{prayerList.prevClass}}"><a ng-click="prayerList.prev()" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>
+							<li class="{{prayerList.nextClass}}"><a ng-click="prayerList.next()" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+						</ul>
+					</nav>
+					<footer>
+						<span>Today is: {{prayerList.today | date:'fullDate'}}</span>
+						<button ng-click="prayerList.gotoToday()">Goto Today</button>
+					</footer>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
